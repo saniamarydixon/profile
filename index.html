@@ -26,12 +26,6 @@
             --text-light: #9999A8;
             --card-bg: #FFFFFF;
             --border: #EDE5D8;
-            --green: #4CAF50;
-            --blue: #3B82F6;
-            --red: #EF4444;
-            --purple: #A855F7;
-            --pink: #EC4899;
-            --yellow: #FBBF24;
         }
 
         html { scroll-behavior: smooth; }
@@ -166,51 +160,7 @@
             max-width: 480px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.9rem 1.8rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 6px 20px rgba(255,122,0,0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255,122,0,0.4);
-        }
-
-        .btn-outline {
-            background: var(--bg-light);
-            color: var(--text);
-            border: 1.5px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* ===== HERO RIGHT ===== */
+        /* ===== HERO RIGHT (with IMAGE) ===== */
         .hero-right {
             position: relative;
             display: flex;
@@ -219,55 +169,31 @@
             min-height: 400px;
         }
 
-        .hero-character {
-            width: 320px;
-            height: 320px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .hero-image-wrap {
+            width: 380px;
+            height: 380px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12rem;
-            position: relative;
-            box-shadow: 0 25px 60px rgba(255,122,0,0.3);
+            box-shadow: 0 25px 60px rgba(255,122,0,0.35);
             animation: floaty 4s ease-in-out infinite;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         @keyframes floaty {
             0%,100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-
-        .float-badge {
-            position: absolute;
-            background: var(--bg-light);
-            padding: 0.6rem 1.1rem;
-            border-radius: 18px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: badgeFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes badgeFloat {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .badge-hi   { top: 5%; left: -10%; animation-delay: 0s; }
-        .badge-hi .emoji { background:#FFD8B0; padding:4px 8px; border-radius:50%; }
-
-        .badge-ai   { top: 15%; right: -5%; animation-delay: 0.8s; }
-        .badge-ai .icon-box { background:#F59E0B; color:white; padding:4px 8px; border-radius:6px; font-weight:800; font-size:0.75rem; }
-
-        .badge-py   { bottom: 25%; right: -12%; animation-delay: 1.5s; }
-        .badge-py .icon-box { background:#A855F7; color:white; padding:4px 8px; border-radius:6px; font-weight:800; font-size:0.75rem; }
-
-        .badge-code { bottom: 8%; left: -8%; animation-delay: 2.2s; }
-        .badge-code .icon-box { background:#10B981; color:white; padding:4px 8px; border-radius:6px; font-weight:800; font-size:0.75rem; }
 
         /* ===== ABOUT ===== */
         .about {
@@ -312,18 +238,23 @@
             to { transform: rotate(360deg); }
         }
 
-        .about-character {
+        /* ===== ABOUT PHOTO (your real picture) ===== */
+        .about-photo {
             position: relative;
             z-index: 1;
-            font-size: 9rem;
-            background: var(--bg-light);
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            background: var(--bg-light);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 5px solid white;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-content h2 {
@@ -338,48 +269,6 @@
             margin-bottom: 2rem;
             font-size: 0.97rem;
             line-height: 1.8;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-item { text-align: left; }
-
-        .stat-num {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-        }
-
-        .learn-btn {
-            background: transparent;
-            border: 1.5px solid var(--text);
-            color: var(--text);
-            padding: 0.7rem 1.6rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .learn-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
         }
 
         /* ===== SKILLS ===== */
@@ -590,6 +479,32 @@
             font-weight: 600;
             color: var(--primary);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255,122,0,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,122,0,0.4);
         }
 
         /* ===== EDUCATION ===== */
@@ -849,10 +764,7 @@
             .hero-socials { justify-content: center; }
             .hero h1 { font-size: 2.5rem; }
             .hero-tagline { margin: 0 auto 2rem; }
-            .hero-buttons { justify-content: center; }
             .about-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-            .about-stats { text-align: center; }
-            .stat-item { text-align: center; }
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
             .project-card { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
             .edu-grid { grid-template-columns: 1fr; }
@@ -878,10 +790,10 @@
                 gap: 0.5rem;
             }
             .hamburger { display: flex; }
-            .hero-character { width: 240px; height: 240px; font-size: 8rem; }
+            .hero-image-wrap { width: 260px; height: 260px; }
             .hero h1 { font-size: 2rem; }
             .about-star { width: 280px; height: 280px; }
-            .about-character { width: 160px; height: 160px; font-size: 7rem; }
+            .about-photo { width: 180px; height: 180px; }
             .about-content h2 { font-size: 2rem; }
             .skills-grid { grid-template-columns: 1fr; }
             .section-head h2 { font-size: 1.8rem; }
@@ -929,24 +841,12 @@
                 A passionate technology student & aspiring software engineer based in Kannur, Kerala.
                 I love problem-solving, building AI-powered projects, and turning creative ideas into real solutions.
             </p>
+        </div>
 
-         
-
+        <!-- HERO IMAGE (cartoon character) -->
         <div class="hero-right fade-in">
-            <div class="hero-character">
-                👩‍💻
-                <div class="float-badge badge-hi">
-                    <span class="emoji">👋</span> Hi
-                </div>
-                <div class="float-badge badge-ai">
-                    <span class="icon-box">AI</span>
-                </div>
-                <div class="float-badge badge-py">
-                    <span class="icon-box">Py</span>
-                </div>
-                <div class="float-badge badge-code">
-                    <span class="icon-box">{ }</span>
-                </div>
+            <div class="hero-image-wrap">
+                <img src="hero.png" alt="Sania - Software Engineer" class="hero-img">
             </div>
         </div>
     </section>
@@ -954,10 +854,14 @@
     <!-- ===== ABOUT ===== -->
     <section class="about" id="about">
         <div class="about-container">
+            <!-- YOUR REAL PHOTO -->
             <div class="about-image-wrap fade-in">
-                
-                <div class="about-character">👩‍🎓</div>
+                <div class="about-star"></div>
+                <div class="about-photo">
+                    <img src="about.jpg" alt="Sania Mary Dixon">
+                </div>
             </div>
+
             <div class="about-content fade-in">
                 <h2>About Me</h2>
                 <p>
@@ -967,10 +871,7 @@
                 <p>
                     I love organizing creative events, learning new technologies, and turning my ideas into working code. 🚀
                 </p>
-
-                
-
-                
+            </div>
         </div>
     </section>
 
