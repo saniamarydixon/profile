@@ -13,19 +13,19 @@
         }
 
         :root {
-            --primary: #FF7A00;
-            --primary-dark: #E66A00;
-            --primary-light: #FFB266;
-            --secondary: #FFA94D;
-            --accent: #FFD8B0;
-            --bg: #F5F1EB;
+            --primary: #2BB6C7;
+            --primary-dark: #1E97A5;
+            --primary-light: #7FD4DF;
+            --secondary: #5FC9D6;
+            --accent: #B8EAF0;
+            --bg: #F0F9FB;
             --bg-light: #FFFFFF;
-            --bg-soft: #FAEEDC;
+            --bg-soft: #E0F4F7;
             --text: #1F1F2E;
             --text-muted: #6B6B7B;
             --text-light: #9999A8;
             --card-bg: #FFFFFF;
-            --border: #EDE5D8;
+            --border: #D8ECEF;
         }
 
         html { scroll-behavior: smooth; }
@@ -49,7 +49,7 @@
             max-width: 800px;
             margin: 1rem auto 0;
             border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(43,182,199,0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -166,7 +166,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 400px;
+            min-height: 420px;
         }
 
         .hero-image-wrap {
@@ -177,10 +177,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 25px 60px rgba(255,122,0,0.35);
+            box-shadow: 0 25px 60px rgba(43,182,199,0.4);
             animation: floaty 4s ease-in-out infinite;
             overflow: hidden;
             position: relative;
+            border: 6px solid white;
         }
 
         .hero-img {
@@ -193,6 +194,33 @@
         @keyframes floaty {
             0%,100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
+        }
+
+        /* floating decorative bubbles around hero */
+        .hero-right::before,
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-light);
+            opacity: 0.3;
+            animation: floaty 5s ease-in-out infinite;
+        }
+
+        .hero-right::before {
+            width: 60px;
+            height: 60px;
+            top: 5%;
+            right: 5%;
+            animation-delay: 1s;
+        }
+
+        .hero-right::after {
+            width: 40px;
+            height: 40px;
+            bottom: 8%;
+            left: 5%;
+            animation-delay: 2s;
         }
 
         /* ===== ABOUT ===== */
@@ -216,45 +244,55 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 380px;
+            min-height: 420px;
         }
 
-        .about-star {
+        /* soft floating dots around about image */
+        .about-image-wrap::before,
+        .about-image-wrap::after {
+            content: '';
             position: absolute;
-            width: 380px;
-            height: 380px;
-            background: var(--primary);
-            clip-path: polygon(
-                50% 0%, 61% 35%, 98% 35%, 68% 57%,
-                79% 91%, 50% 70%, 21% 91%, 32% 57%,
-                2% 35%, 39% 35%
-            );
-            opacity: 0.85;
-            animation: starSpin 20s linear infinite;
+            border-radius: 50%;
+            background: var(--primary-light);
+            opacity: 0.3;
+            animation: floaty 6s ease-in-out infinite;
         }
 
-        @keyframes starSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .about-image-wrap::before {
+            width: 50px;
+            height: 50px;
+            top: 10%;
+            left: 0%;
+            animation-delay: 1s;
         }
 
-        /* ===== ABOUT PHOTO (your real picture) ===== */
+        .about-image-wrap::after {
+            width: 35px;
+            height: 35px;
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        /* ===== ABOUT PHOTO (your second image) ===== */
         .about-photo {
             position: relative;
             z-index: 1;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
+            width: 340px;
+            height: 420px;
+            border-radius: 180px;
             overflow: hidden;
-            background: var(--bg-light);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            border: 5px solid white;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            box-shadow: 0 25px 60px rgba(43,182,199,0.35);
+            border: 6px solid white;
+            animation: floaty 5s ease-in-out infinite;
         }
 
         .about-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
         .about-content h2 {
@@ -309,14 +347,14 @@
             background: var(--bg-light);
             border-radius: 20px;
             padding: 1.5rem 1.3rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 25px rgba(43,182,199,0.1);
             transition: all 0.3s;
             cursor: pointer;
         }
 
         .skill-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(43,182,199,0.18);
         }
 
         .skill-card-head {
@@ -389,14 +427,14 @@
         }
 
         .project-card {
-            background: linear-gradient(135deg, var(--bg-soft) 0%, #FFE8CC 100%);
+            background: linear-gradient(135deg, var(--bg-soft) 0%, #C7EAF0 100%);
             border-radius: 24px;
             padding: 3rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
-            box-shadow: 0 15px 40px rgba(255,122,0,0.15);
+            box-shadow: 0 15px 40px rgba(43,182,199,0.2);
             position: relative;
             overflow: hidden;
         }
@@ -408,7 +446,7 @@
             right: -20%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(255,122,0,0.2), transparent 70%);
+            background: radial-gradient(circle, rgba(43,182,199,0.25), transparent 70%);
             border-radius: 50%;
         }
 
@@ -429,7 +467,7 @@
             align-items: center;
             justify-content: center;
             font-size: 7rem;
-            box-shadow: 0 20px 50px rgba(255,122,0,0.4);
+            box-shadow: 0 20px 50px rgba(43,182,199,0.45);
             position: relative;
         }
 
@@ -498,13 +536,13 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 6px 20px rgba(255,122,0,0.3);
+            box-shadow: 0 6px 20px rgba(43,182,199,0.35);
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255,122,0,0.4);
+            box-shadow: 0 10px 30px rgba(43,182,199,0.45);
         }
 
         /* ===== EDUCATION ===== */
@@ -524,7 +562,7 @@
             background: var(--bg-light);
             border-radius: 20px;
             padding: 2rem 1.5rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 25px rgba(43,182,199,0.1);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -540,7 +578,7 @@
 
         .edu-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 45px rgba(43,182,199,0.18);
         }
 
         .edu-icon {
@@ -605,7 +643,7 @@
 
         /* ===== CONTACT ===== */
         .contact {
-            background: linear-gradient(135deg, var(--bg-soft), #FFE0BD);
+            background: linear-gradient(135deg, var(--bg-soft), #C7EAF0);
             padding: 6rem 2rem;
         }
 
@@ -615,7 +653,7 @@
             background: var(--bg-light);
             border-radius: 28px;
             padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(43,182,199,0.2);
             text-align: center;
         }
 
@@ -748,7 +786,7 @@
             border: none;
             font-size: 1.2rem;
             font-weight: 700;
-            box-shadow: 0 6px 20px rgba(255,122,0,0.4);
+            box-shadow: 0 6px 20px rgba(43,182,199,0.4);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
@@ -792,8 +830,7 @@
             .hamburger { display: flex; }
             .hero-image-wrap { width: 260px; height: 260px; }
             .hero h1 { font-size: 2rem; }
-            .about-star { width: 280px; height: 280px; }
-            .about-photo { width: 180px; height: 180px; }
+            .about-photo { width: 250px; height: 320px; border-radius: 140px; }
             .about-content h2 { font-size: 2rem; }
             .skills-grid { grid-template-columns: 1fr; }
             .section-head h2 { font-size: 1.8rem; }
@@ -843,7 +880,7 @@
             </p>
         </div>
 
-        <!-- HERO IMAGE (cartoon character) -->
+        <!-- HERO IMAGE 1 -->
         <div class="hero-right fade-in">
             <div class="hero-image-wrap">
                 <img src="hero.png" alt="Sania - Software Engineer" class="hero-img">
@@ -854,9 +891,8 @@
     <!-- ===== ABOUT ===== -->
     <section class="about" id="about">
         <div class="about-container">
-            <!-- YOUR REAL PHOTO -->
+            <!-- ABOUT IMAGE 2 -->
             <div class="about-image-wrap fade-in">
-                <div class="about-star"></div>
                 <div class="about-photo">
                     <img src="about.jpg" alt="Sania Mary Dixon">
                 </div>
